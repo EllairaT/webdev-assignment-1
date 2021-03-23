@@ -1,14 +1,40 @@
+/* color palette */
 header {
-  background: lightblue;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  background: #f0ebd8;
 }
 
 body {
-  background: lightblue;
+  background-image: url("../images/bg.jpg");
+  background-size: auto;
+}
+
+.display-4 {
+  font-weight: 100;
+  color: white;
+}
+
+.card, .main-card {
+  background-color: #748cab25;
+  display: inline-block;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.lead {
+  color: whitesmoke;
+}
+
+.input-group-text {
+  background: none;
+  border: none;
+}
+
+input, .form-control {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background: none;
 }
 /*# sourceMappingURL=style.css.map */

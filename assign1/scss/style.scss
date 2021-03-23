@@ -1,11 +1,46 @@
-$bg-color: lightblue;
+
+/* color palette */
+$rich-black: #0d1321;
+$prussian-blue: #1d2d44;
+$black-coral: #3e5c76;
+$shadow-blue: #748cab;
+$eggshell: #f0ebd8;
+$card-bg: #748cab25;
 
 header{
-    background: lightblue;
-    display:flex;
-    justify-content: center;
+    background: $eggshell;
 }
 
 body{
-    background: $bg-color;
+    background-image: url('../images/bg.jpg');
+    background-size: auto;
 }
+
+.display-4{
+    font-weight:100;
+    color: white;
+}
+
+.card,.main-card{
+    background-color: $card-bg;
+    display: inline-block; 
+    justify-content: left;
+}
+
+.lead{
+    color: whitesmoke;
+}
+
+.input-group-text{
+    background: none;
+    border: none;
+}
+
+input, .form-control{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background:none;
+  }
+
