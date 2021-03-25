@@ -1,4 +1,3 @@
-
 /* color palette */
 $rich-black: #0d1321;
 $prussian-blue: #1d2d44;
@@ -7,40 +6,51 @@ $shadow-blue: #748cab;
 $eggshell: #f0ebd8;
 $card-bg: #f0ebd896;
 
-header{
-    background: $eggshell;
+header {
+  background: $eggshell;
 }
 
-body{
-    background-image: url('../images/bg.jpg');
-    background-size: auto;
+body {
+  background-image: url("../images/bg.jpg");
+  background-size: auto;
 }
 
-.display-4{
-    font-weight:100;
-    color: white;
+.display-4 {
+  font-weight: 100;
+  color: white;
 }
 
-.card,.main-card{
-    background-color: $card-bg;
-    display: inline-block; 
-    justify-content: left;
+.card .main-card {
+  background-color: $card-bg;
+  display: inline-block;
+  justify-content: left;
 }
 
-.lead{
-    color: whitesmoke;
+.lead {
+  color: whitesmoke;
 }
 
-.input-group-text{
-    background: none;
-    border: none;
+.input-group-text {
+  background: none;
+  border: none;
 }
 
-input, .form-control{
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: groove;
-    background:none;
+input .form-control {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background: none;
+  & .form-group .input-special{
+    border-bottom-style: hidden;
   }
+}
+
+.btn-group .permissions-group {
+  display: flex;
+}
+
+.permissions-group .btn .btn-check  {
+    flex: 1;    
+}
 

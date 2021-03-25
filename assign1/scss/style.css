@@ -13,7 +13,7 @@ body {
   color: white;
 }
 
-.card, .main-card {
+.card .main-card {
   background-color: #f0ebd896;
   display: inline-block;
   -webkit-box-pack: left;
@@ -30,11 +30,27 @@ body {
   border: none;
 }
 
-input, .form-control {
+input .form-control {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: groove;
   background: none;
+}
+
+input .form-control .form-group .input-special {
+  border-bottom-style: hidden;
+}
+
+.btn-group .permissions-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.permissions-group .btn .btn-check {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 /*# sourceMappingURL=style.css.map */
