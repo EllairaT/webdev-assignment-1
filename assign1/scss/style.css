@@ -13,8 +13,8 @@ body {
   color: white;
 }
 
-.card .main-card {
-  background-color: #f0ebd896;
+.main-card {
+  background-color: rgba(239, 234, 215, 0.588);
   display: inline-block;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
@@ -26,20 +26,27 @@ body {
 }
 
 .input-group-text {
-  background: none;
-  border: none;
-}
-
-input .form-control {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  border-bottom-style: groove;
+  border-bottom-style: solid;
+  border-bottom-color: #0d132188;
+  border-radius: 0%;
   background: none;
 }
 
-input .form-control .form-group .input-special {
-  border-bottom-style: hidden;
+.input-group .form-control {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: solid;
+  border-bottom-color: #0d132188;
+  border-radius: 0%;
+  background: none;
+}
+
+.statcode {
+  width: 10%;
 }
 
 .btn-group .permissions-group {

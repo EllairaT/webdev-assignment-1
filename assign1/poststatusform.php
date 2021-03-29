@@ -1,5 +1,9 @@
 <?php
+include 'dbcon.php';
+
+Connect();
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -18,30 +22,32 @@ session_start();
         <!-- Header -->
         <div class="container">
             <div class="jumbotron">
-                <h1 class="display-4">Simpbook</h1>
-                <p class="lead">For simps, by simps.</p>
+                <h1 class="display-4">pls no more php</h1>
+                <p class="lead">it's so bad.</p>
                 <hr class="my-4">
             </div>
 
-            <!-- Start of card -->
-            <div class="card main-card text-md-start" style="width: 50%;">
+            <!------------------------ START OF CARD ------------------------>
+            <div class="card main-card text-md-start mx-auto" style="width: 50%;">
                 <!--Card Header contains status code and date -->
-                <!--Status Code-->
-                <div class="card-header row">
-                    <div class="form-group col-md">
-                        <div class="input-group mb-1">
+
+                <div class="card-header navbar">
+                    <!-- Status Code -->
+                    <form class="form-inline statcode">
+                        <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="sc">S</span>
+                                <span class="input-group-text float-end px-0" id="sc">S </span>
                             </div>
-                            <input type="text" class="input-special" name="statuscode" id="statcode" maxlength="4" pattern="[0-9]{4}" size="3" />
+                            <input type="text" class="form-control px-0" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder=" 0000" />
                         </div>
-                        <small id="passwordHelpBlock" class="form-text text-muted">Your status code must be a unique number e.g. 0001.</small>
-                    </div>
+                    </form>
 
                     <!--Date-->
-                    <div class="form-group mb-3 col-md float-right">
-                        <input type="date" name="Date" id="postdate" />
-                    </div>
+                    <form class="form-inline w-25">
+                        <div class="input-group">
+                            <input type="date" class="form-control" name="Date" id="postdate" />
+                        </div>
+                    </form>
                 </div>
 
                 <!-- Start of card body -->
@@ -49,12 +55,12 @@ session_start();
                     <!--Status field -->
                     <div class="form-group" id="stat">
                         <div class="input-group form-group">
-                            <input type="text" class="form-control mb-3 mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" />
+                            <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" />
                         </div>
                     </div>
 
                     <!--Visibility-->
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 mt-3">
                         <label>Share:</label>
 
                         <label for="public">Public</label>
@@ -66,8 +72,6 @@ session_start();
                         <label for="me">Only Me</label>
                         <input type="radio" name="visibility" id="me" value="me" />
                     </div>
-
-
 
                     <!--Permissions version 1 (default checkbox look)
                     
@@ -97,7 +101,7 @@ session_start();
                     </div>
                 </div>
             </div>
-            <!-- End of card -->
+            <!------------------------ End of card ------------------------>
         </div>
     </body>
 </div>

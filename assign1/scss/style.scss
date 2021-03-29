@@ -4,7 +4,7 @@ $prussian-blue: #1d2d44;
 $black-coral: #3e5c76;
 $shadow-blue: #748cab;
 $eggshell: #f0ebd8;
-$card-bg: #f0ebd896;
+$card-bg: rgba(239, 234, 215, 0.588);
 
 header {
   background: $eggshell;
@@ -20,7 +20,7 @@ body {
   color: white;
 }
 
-.card .main-card {
+.main-card {
   background-color: $card-bg;
   display: inline-block;
   justify-content: left;
@@ -30,27 +30,31 @@ body {
   color: whitesmoke;
 }
 
-.input-group-text {
-  background: none;
-  border: none;
-}
-
-input .form-control {
+@mixin text-box() {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  border-bottom-style: groove;
+  border-bottom-style: solid;
+  border-bottom-color: #0d132188;
+  border-radius: 0%;
   background: none;
-  & .form-group .input-special{
-    border-bottom-style: hidden;
-  }
+}
+
+.input-group-text {
+  @include text-box()
+}
+.input-group .form-control{
+  @include text-box;
+}
+
+.statcode{
+  width: 10%;
 }
 
 .btn-group .permissions-group {
   display: flex;
 }
 
-.permissions-group .btn .btn-check  {
-    flex: 1;    
+.permissions-group .btn .btn-check {
+  flex: 1;
 }
-
