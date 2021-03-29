@@ -12,10 +12,12 @@ session_start();
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Post Status</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="scss/style.css" type="text/css">
+
+        <title>Post Status</title>
     </head>
 
     <body>
@@ -36,9 +38,9 @@ session_start();
                     <form class="form-inline statcode">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text float-end px-0" id="sc">S </span>
+                                <span class="input-group-text float-end px-0" id="sc">S</span>
                             </div>
-                            <input type="text" class="form-control px-0" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder=" 0000" />
+                            <input type="text" class="form-control px-1" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder="0000" />
                         </div>
                     </form>
 
@@ -52,17 +54,25 @@ session_start();
 
                 <!-- Start of card body -->
                 <div class="card-body">
-                    <!--Status field -->
-                    <div class="form-group" id="stat">
-                        <div class="input-group form-group">
-                            <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" />
+
+                    <!--Visibility-->
+
+                    <div class="btn-group dropend">
+                        <button type="button" class="btn btn-secondary">Friends only</button>
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
                         </div>
                     </div>
 
-                    <!--Visibility-->
-                    <div class="form-group mb-3 mt-3">
-                        <label>Share:</label>
 
+
+                    <div class="form-group mb-3 mt-3">
                         <label for="public">Public</label>
                         <input type="radio" name="visibility" id="public" value="public" />
 
@@ -71,6 +81,13 @@ session_start();
 
                         <label for="me">Only Me</label>
                         <input type="radio" name="visibility" id="me" value="me" />
+                    </div>
+
+                    <!--Status field -->
+                    <div class="form-group" id="stat">
+                        <div class="input-group form-group">
+                            <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" />
+                        </div>
                     </div>
 
                     <!--Permissions version 1 (default checkbox look)

@@ -49,6 +49,10 @@ body {
   width: 10%;
 }
 
+.visibility-badge {
+  padding: 10px;
+}
+
 .btn-group .permissions-group {
   display: -webkit-box;
   display: -ms-flexbox;
