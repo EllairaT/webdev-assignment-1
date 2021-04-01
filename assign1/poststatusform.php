@@ -12,7 +12,7 @@ session_start();
 
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="scss/style.css" type="text/css">
@@ -47,7 +47,7 @@ session_start();
                     <!--Date-->
                     <form class="form-inline w-25">
                         <div class="input-group">
-                            <input type="date" class="form-control" name="Date" id="postdate" />
+                            <input type="date" class="form-control px-0" name="Date" id="postdate" />
                         </div>
                     </form>
                 </div>
@@ -58,29 +58,30 @@ session_start();
                     <!--Visibility-->
 
                     <div class="btn-group dropend">
-                        <button type="button" class="btn btn-secondary">Friends only</button>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Share
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+
+                        <!-- These are STILL technically radio buttons. -->
+                        <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="sharedropdownmenu">
+                            <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off">
+                            <label class="btn btn-secondary dropdown-item" for="option1">
+                                <img src="..\node_modules\bootstrap-icons\icons\person-circle.svg" alt="Bootstrap" width="auto" height="auto">
+                                Only me
+                            </label>
+
+                            <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                            <label class="btn btn-secondary dropdown-item" for="option1">
+                                <img src="..\node_modules\bootstrap-icons\icons\people-fill.svg" alt="Bootstrap" width="auto" height="auto">
+                                Friends
+                            </label>
+
+                            <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+                            <label class="btn btn-secondary dropdown-item" for="option1">
+                                <img src="..\node_modules\bootstrap-icons\icons\globe.svg" alt="Bootstrap" width="auto" height="auto">
+                                Public
+                            </label>
                         </div>
-                    </div>
-
-
-
-                    <div class="form-group mb-3 mt-3">
-                        <label for="public">Public</label>
-                        <input type="radio" name="visibility" id="public" value="public" />
-
-                        <label for="friends">Friends</label>
-                        <input type="radio" name="visibility" id="friends" value="friends" />
-
-                        <label for="me">Only Me</label>
-                        <input type="radio" name="visibility" id="me" value="me" />
                     </div>
 
                     <!--Status field -->
@@ -90,28 +91,33 @@ session_start();
                         </div>
                     </div>
 
-                    <!--Permissions version 1 (default checkbox look)
-                    
-                        <div class="form-group mb-3">
-                        <label>Permissions:</label>
-                        <input type="checkbox" name="permission" value="like">Allow Like
-                        <input type="checkbox" name="permission" value="comment">Allow Comments
-                        <input type="checkbox" name="permission" value="share">Allow Share
-
-                    </div> -->
-
-                    <!-- permissions version 2 (checkbox buttons)-->
-                    <div class="btn-group permissions-group d-flex" role="group" aria-label="Basic checkbox toggle button group">
-                        <input type="checkbox" class="btn-check" id="btnlike" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnlike">Allow Like</label>
-
-                        <input type="checkbox" class="btn-check" id="btncomment" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btncomment">Allow Comments</label>
-
-                        <input type="checkbox" class="btn-check" id="btnshare" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="btnshare">Allow Share</label>
+                    <!--permissions dropdown here. for every tick, add relevant icon to the right side -->
+                    <div class="d-grid">
+                        <button class="btn btn-sm pbtn mt-3 d-flex" id="permsbtn" data-bs-toggle="collapse" href="#permissionslist" role="button">
+                            <span class="align-self-start d-inline">Permissions
+                                <img src="..\node_modules\bootstrap-icons\icons\caret-right.svg" alt="Bootstrap" width="auto" height="auto">
+                            </span>
+                        </button>
                     </div>
 
+                    <div class="collapse" id="permissionslist">
+                        <div class="d-flex justify-content-center">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <img src="..\node_modules\bootstrap-icons\icons\heart-fill.svg" alt="Bootstrap" width="auto" height="auto">
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <img src="..\node_modules\bootstrap-icons\icons\chat-square-dots-fill.svg" alt="Bootstrap" width="auto" height="auto">
+                            </div>
+
+                            <div class="form-check  form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <img src="..\node_modules\bootstrap-icons\icons\share-fill.svg" alt="Bootstrap" width="auto" height="auto">
+                            </div>
+                        </div>
+                    </div>
                     <!--Submit button -->
                     <div class="d-grid gap-2 mt-2">
                         <button type="button" class="btn btn-primary btn-submit" value="Submit">Post</button>
