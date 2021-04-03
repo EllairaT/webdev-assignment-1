@@ -20,9 +20,11 @@ session_start();
         <link rel="stylesheet" href="scss/style.css" type="text/css">
 
         <title>Post Status</title>
+
     </head>
 
     <body>
+
         <!-- Header -->
         <div class="container">
             <div class="jumbotron">
@@ -42,14 +44,15 @@ session_start();
                             <div class="input-group-prepend">
                                 <span class="input-group-text float-end px-0" id="sc">S</span>
                             </div>
-                            <input type="text" class="form-control px-1" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder="0000" required />
+                            <input type="text" class="form-control px-1" id="sc" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder="0000" data-bs-toggle="popover" title="Status Code" data-bs-content="Kinda like a diary entry, make a unique 4 digit number! (e.g. 0123)" data-bs-trigger="hover" required />
                         </div>
+
                     </form>
 
                     <!--Date-->
                     <form class="form-inline w-25" action="poststatusprocess.php">
                         <div class="input-group">
-                            <input type="date" class="form-control px-0" name="Date" id="postdate" required/>
+                            <input type="date" class="form-control px-0" name="Date" id="postdate" required />
                         </div>
                     </form>
                 </div>
@@ -59,14 +62,14 @@ session_start();
 
                     <!--Visibility; show to friends is the default option-->
                     <form action="poststatusprocess.php">
-                        <div class="btn-group dropend">
-                            <button type="button" id="share-with" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" required>
-                                Friends 
+                        <div class="btn-group dropend" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="By default, only your friends can see this post. You can change this though!" title="Who can see this post?" data-bs-placement="left">
+                            <button type="button" id="share-with" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Friends
                             </button>
 
                             <!-- These are STILL technically radio buttons. -->
                             <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="sharedropdownmenu">
-                                <input type="radio" class="btn-check" name="share-options" id="onlyme" autocomplete="off" value="Only Me" onClick="shareOptions('onlyme')" >
+                                <input type="radio" class="btn-check" name="share-options" id="onlyme" autocomplete="off" value="Only Me" onClick="shareOptions('onlyme')">
                                 <label class="btn btn-secondary dropdown-item" for="onlyme">
                                     <img src="..\node_modules\bootstrap-icons\icons\person-circle.svg" width="auto" height="auto">
                                     Only me
@@ -106,14 +109,14 @@ session_start();
                     <form action="poststatusprocess.php">
                         <div class="form-group" id="stat-field">
                             <div class="input-group form-group">
-                                <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" required/>
+                                <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" required />
                             </div>
                         </div>
                     </form>
 
                     <!--collapse button -->
                     <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePermissions" aria-expanded="false" aria-controls="collapsePermissions">
-                        <span><small class="text-muted">Permissions
+                        <span><small class="text-muted" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="You can choose if you want your audience to like, comment or even share your post!" title="Permissions!" data-bs-placement="left">Permissions
                                 <img src="..\node_modules\bootstrap-icons\icons\caret-right.svg" width="auto" height="auto">
                             </small></span>
                     </button>
@@ -122,17 +125,17 @@ session_start();
                     <div class="collapse mx-3" id="collapsePermissions">
                         <div id="permissionslist" class="align-self-start">
                             <form action="poststatusprocess.php">
-                                <div class="form-check form-check-inline">
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="like">
                                     <input class="form-check-input" type="checkbox" id="like" onClick="addPermission('like')">
                                     <img src="..\node_modules\bootstrap-icons\icons\heart-fill.svg" width="auto" height="auto">
                                 </div>
 
-                                <div class="form-check form-check-inline">
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="comment">
                                     <input class="form-check-input" type="checkbox" id="comment" onClick="addPermission('comment')">
                                     <img src="..\node_modules\bootstrap-icons\icons\chat-square-dots-fill.svg" width="auto" height="auto">
                                 </div>
 
-                                <div class="form-check  form-check-inline">
+                                <div class="form-check  form-check-inline" data-bs-toggle="tooltip" title="share">
                                     <input class="form-check-input" type="checkbox" id="share" onClick="addPermission('share')">
                                     <img src="..\node_modules\bootstrap-icons\icons\share-fill.svg" width="auto" height="auto">
                                 </div>
@@ -152,7 +155,19 @@ session_start();
 </div>
 <!------------------------ End of card ------------------------>
 </div>
+<!-- Enable popovers and tooltips in the browser -->
+<script>
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    });
+
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+</script>
+
 </body>
 </div>
-
 </html>
