@@ -1,58 +1,46 @@
+
 /* color palette */
 $rich-black: #0d1321;
 $prussian-blue: #1d2d44;
 $black-coral: #3e5c76;
 $shadow-blue: #748cab;
 $eggshell: #f0ebd8;
-$card-bg: rgba(239, 234, 215, 0.588);
+$card-bg: #f0ebd896;
 
-header {
-  background: $eggshell;
+header{
+    background: $eggshell;
 }
 
-body {
-  background-image: url("../images/bg.jpg");
-  background-size: auto;
+body{
+    background-image: url('../images/bg.jpg');
+    background-size: auto;
 }
 
-.display-4 {
-  font-weight: 100;
-  color: white;
+.display-4{
+    font-weight:100;
+    color: white;
 }
 
-.main-card {
-  background-color: $card-bg;
-  display: inline-block;
-  justify-content: left;
+.card,.main-card{
+    background-color: $card-bg;
+    display: inline-block; 
+    justify-content: left;
 }
 
-.lead {
-  color: whitesmoke;
+.lead{
+    color: whitesmoke;
 }
 
-
-@mixin text-box() {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: solid;
-  border-bottom-color: #0d132188;
-  border-radius: 0%;
-  background: none;
+.input-group-text{
+    background: none;
+    border: none;
 }
 
-.input-group-text {
-  @include text-box()
-}
+input, .form-control{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background:none;
+  }
 
-.input-group .form-control{
-  @include text-box;
-}
-
-.statcode{
-  width: 10%;
-}
-
-.visibility-badge{
-  padding: 10px;
-}
