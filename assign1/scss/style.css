@@ -13,8 +13,8 @@ body {
   color: white;
 }
 
-.main-card {
-  background-color: rgba(239, 234, 215, 0.588);
+.card, .main-card {
+  background-color: #f0ebd896;
   display: inline-block;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
@@ -26,42 +26,15 @@ body {
 }
 
 .input-group-text {
+  background: none;
+  border: none;
+}
+
+input, .form-control {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  border-bottom-style: solid;
-  border-bottom-color: #0d132188;
-  border-radius: 0%;
+  border-bottom-style: groove;
   background: none;
-}
-
-.input-group .form-control {
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: solid;
-  border-bottom-color: #0d132188;
-  border-radius: 0%;
-  background: none;
-}
-
-.statcode {
-  width: 10%;
-}
-
-.visibility-badge {
-  padding: 10px;
-}
-
-.btn-group .permissions-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.permissions-group .btn .btn-check {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 /*# sourceMappingURL=style.css.map */

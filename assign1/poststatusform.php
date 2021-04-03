@@ -1,8 +1,12 @@
 <?php
-include 'dbcon.php';
+// include 'dbcon.php';
 
-Connect();
-session_start();
+// Connect();
+// session_start();
+
+//sometimes the server is set up for a different timezone. This is to make sure the timezone is correct (for us)
+date_default_timezone_set("Pacific/Auckland");
+
 
 ?>
 
@@ -37,7 +41,7 @@ session_start();
 
                 <div class="card-header navbar">
                     <!-- Status Code -->
-                    <form class="form-inline statcode" action="poststatusprocess.php">
+                    <form class="form-inline statcode" action="poststatusprocess.php" method="POST">
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text float-end px-0" id="sc">S</span>
@@ -49,7 +53,7 @@ session_start();
                     <!--Date-->
                     <form class="form-inline w-25" action="poststatusprocess.php">
                         <div class="input-group">
-                            <input type="date" class="form-control px-0" name="Date" id="postdate" required/>
+                            <input type="date" class="form-control px-0" name="date" id="postdate" value="<?php echo date('Y-m-d'); ?>" required/>
                         </div>
                     </form>
                 </div>
@@ -58,7 +62,7 @@ session_start();
                 <div class="card-body">
 
                     <!--Visibility; show to friends is the default option-->
-                    <form action="poststatusprocess.php">
+                    <form action="poststatusprocess.php" action="POST">
                         <div class="btn-group dropend">
                             <button type="button" id="share-with" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" required>
                                 Friends 
@@ -103,7 +107,7 @@ session_start();
 
 
                     <!--Status field -->
-                    <form action="poststatusprocess.php">
+                    <form action="poststatusprocess.php" action="POST">
                         <div class="form-group" id="stat-field">
                             <div class="input-group form-group">
                                 <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" required/>
@@ -121,19 +125,19 @@ session_start();
                     <!--permissions here. for every tick, add relevant icon to the right side -->
                     <div class="collapse mx-3" id="collapsePermissions">
                         <div id="permissionslist" class="align-self-start">
-                            <form action="poststatusprocess.php">
+                            <form action="poststatusprocess.php" action="POST">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="like" onClick="addPermission('like')">
+                                    <input class="form-check-input" type="checkbox" name="permission" value ="like" id="like" onClick="addPermission('like')">
                                     <img src="..\node_modules\bootstrap-icons\icons\heart-fill.svg" width="auto" height="auto">
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="comment" onClick="addPermission('comment')">
+                                    <input class="form-check-input" type="checkbox" name="permission" value ="comment" id="comment" onClick="addPermission('comment')">
                                     <img src="..\node_modules\bootstrap-icons\icons\chat-square-dots-fill.svg" width="auto" height="auto">
                                 </div>
 
                                 <div class="form-check  form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="share" onClick="addPermission('share')">
+                                    <input class="form-check-input" type="checkbox" name="permission" value ="share" id="share" onClick="addPermission('share')">
                                     <img src="..\node_modules\bootstrap-icons\icons\share-fill.svg" width="auto" height="auto">
                                 </div>
                             </form>
@@ -141,7 +145,7 @@ session_start();
                     </div>
 
                     <!--Submit button -->
-                    <form action="poststatusprocess.php">
+                    <form action="poststatusprocess.php" action="POST">
                         <div class="d-grid gap-2 mt-2">
                             <button type="submit" class="btn btn-primary btn-submit" value="Submit" onClick="printPermissions()">Post</button>
                         </div>
