@@ -47,19 +47,3 @@ function initializePoppers() {
 
 function checkStatusCode() {}
 
-function submitPost() {
-  $(".btn-submit").on("click",function (e) {
-    e.preventDefault(); // or make the button type=button
-    $.post(
-      $("#s_code").attr("action"),
-      $("#s_date").serialize() + $("#s_date").serialize(),
-      +$("#s_share").serialize(),
-      +$("#s_status").serialize(),
-      +$("#s_permissions").serialize(),
-      +$("#s_submit").serialize(),
-      +function () {
-        alert("Both forms submitted");
-      }
-    );
-  });
-}
