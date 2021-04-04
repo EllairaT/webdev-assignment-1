@@ -1,34 +1,37 @@
 <?php
-// include 'dbcon.php';
+include 'dbcon.php';
 
-// Connect();
-// session_start();
-
+Connect();
+//session_start();
 //sometimes the server is set up for a different timezone. This is to make sure the timezone is correct (for us)
-date_default_timezone_set("Pacific/Auckland");
-
+date_default_timezone_set('Pacific/Auckland');
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <div class="content center-block text-center">
 
     <head>
+        <title>Post Status</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/script.js"></script>
         <link rel="stylesheet" href="scss/style.css" type="text/css">
 
-        <title>Post Status</title>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                initializePoppers();
 
+            
+            });
+        </script>
     </head>
 
     <body>
-
         <!-- Header -->
         <div class="container">
             <div class="jumbotron">
@@ -38,25 +41,25 @@ date_default_timezone_set("Pacific/Auckland");
             </div>
 
             <!------------------------ START OF CARD ------------------------>
-            <div class="card main-card text-md-start mx-auto" style="width: 50%;">
+            <div class="card main-card text-md-start mx-auto my-auto" style="width: 50%;">
                 <!--Card Header contains status code and date -->
 
                 <div class="card-header navbar">
                     <!-- Status Code -->
-                    <form class="form-inline statcode" action="poststatusprocess.php" method="POST">
-                        <div class="input-group">
+                    <form class="form-inline statcode post-form" action="poststatusprocess.php" method="POST" id="s_code">
+                        <div class="input-group w-25 mx-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text float-end px-0" id="sc">S</span>
                             </div>
-                            <input type="text" class="form-control px-1" id="sc" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder="0000" data-bs-toggle="popover" title="Status Code" data-bs-content="Kinda like a diary entry, make a unique 4 digit number! (e.g. 0123)" data-bs-trigger="hover" required />
+                            <input type="text" class="form-control px-1 w-25" name="statuscode" maxlength="4" pattern="[0-9]{4}" placeholder="0000" data-bs-toggle="popover" title="Status Code" data-bs-content="Kinda like a diary entry, make a unique 4 digit number! (e.g. 0123)" data-bs-trigger="hover" />
                         </div>
 
                     </form>
 
                     <!--Date-->
-                    <form class="form-inline w-25" action="poststatusprocess.php">
+                    <form class="form-inline w-25 post-form" action="poststatusprocess.php" method="POST" id="s_date">
                         <div class="input-group">
-                            <input type="date" class="form-control px-0" name="date" id="postdate" value="<?php echo date('Y-m-d'); ?>" required/>
+                            <input type="date" class="form-control px-0" name="date" id="postdate" value="<?php echo date('Y-m-d'); ?>" />
                         </div>
                     </form>
                 </div>
@@ -65,13 +68,15 @@ date_default_timezone_set("Pacific/Auckland");
                 <div class="card-body">
 
                     <!--Visibility; show to friends is the default option-->
-                    <form action="poststatusprocess.php" action="POST">
+                    <form action="poststatusprocess.php" method="POST" id="s_share" class="post-form">
                         <div class="btn-group dropend">
-                            <button type="button" id="share-with" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" required>
-                                Friends 
+                            <button type="button" id="share-with" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Friends
                             </button>
+                            <span class="d-inline-flex mx-3" data-bs-toggle="popover" title="Who can see this?" data-bs-content="By default, only your friends can see what you post." data-bs-trigger="hover">
+                                <img src="..\node_modules\bootstrap-icons\icons\info-circle.svg" width="auto" height="auto">
+                            </span>
 
-                            <!-- These are STILL technically radio buttons. -->
                             <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="sharedropdownmenu">
                                 <input type="radio" class="btn-check" name="share-options" id="onlyme" autocomplete="off" value="Only Me" onClick="shareOptions('onlyme')">
                                 <label class="btn btn-secondary dropdown-item" for="onlyme">
@@ -110,10 +115,10 @@ date_default_timezone_set("Pacific/Auckland");
 
 
                     <!--Status field -->
-                    <form action="poststatusprocess.php" action="POST">
+                    <form action="poststatusprocess.php" method="POST" id="s_status" class="post-form">
                         <div class="form-group" id="stat-field">
                             <div class="input-group form-group">
-                                <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" required />
+                                <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[a-zA-Z0-9 ,.!\?]" placeholder="Got something to say?" />
                             </div>
                         </div>
                     </form>
@@ -128,50 +133,46 @@ date_default_timezone_set("Pacific/Auckland");
                     <!--permissions here. for every tick, add relevant icon to the right side -->
                     <div class="collapse mx-3" id="collapsePermissions">
                         <div id="permissionslist" class="align-self-start">
-                            <form action="poststatusprocess.php" action="POST">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="permission" value ="like" id="like" onClick="addPermission('like')">
-                                    <img src="..\node_modules\bootstrap-icons\icons\heart-fill.svg" width="auto" height="auto">
+
+                            <form action="poststatusprocess.php" method="POST" id="s_permissions" class="post-form">
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="Like">
+                                    <label>
+                                        <input class="form-check-input" type="checkbox" name="permission-like" value="like" id="likeCheck" onClick="addPermission('like')">
+                                        <img src="..\node_modules\bootstrap-icons\icons\heart-fill.svg" width="auto" height="auto"></label>
                                 </div>
 
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="permission" value ="comment" id="comment" onClick="addPermission('comment')">
-                                    <img src="..\node_modules\bootstrap-icons\icons\chat-square-dots-fill.svg" width="auto" height="auto">
+                                <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="Comment">
+                                    <label>
+                                        <input class="form-check-input" type="checkbox" name="permission-comment" value="comment" id="commentCheck" onClick="addPermission('comment')">
+                                        <img src="..\node_modules\bootstrap-icons\icons\chat-square-dots-fill.svg" width="auto" height="auto">
+                                    </label>
                                 </div>
 
-                                <div class="form-check  form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="permission" value ="share" id="share" onClick="addPermission('share')">
-                                    <img src="..\node_modules\bootstrap-icons\icons\share-fill.svg" width="auto" height="auto">
+                                <div class="form-check  form-check-inline" data-bs-toggle="tooltip" title="Share">
+                                    <label>
+                                        <input class="form-check-input" type="checkbox" name="permission-share" value="share" id="shareCheck" onClick="addPermission('share')">
+                                        <img src="..\node_modules\bootstrap-icons\icons\share-fill.svg" width="auto" height="auto">
+                                    </label>
                                 </div>
                             </form>
+
                         </div>
                     </div>
 
                     <!--Submit button -->
-                    <form action="poststatusprocess.php" action="POST">
+                    <form action="poststatusprocess.php" method="POST" id="s_submit" class="post-form">
                         <div class="d-grid gap-2 mt-2">
-                            <button type="submit" class="btn btn-primary btn-submit" value="Submit" onClick="printPermissions()">Post</button>
+                            <input type="submit" class="btn btn-primary btn-submit" name="submit" value="Submit" onClick="submitPost()">
                         </div>
                     </form>
+                    <div class="test-result float"></div>
                 </div>
             </div>
         </div>
 </div>
 <!------------------------ End of card ------------------------>
 </div>
-<!-- Enable popovers and tooltips in the browser -->
-<script>
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl)
-    });
-
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    });
-</script>
-
 </body>
 </div>
+
 </html>
