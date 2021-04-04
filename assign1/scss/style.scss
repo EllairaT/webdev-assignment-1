@@ -34,18 +34,16 @@ body {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
-  border-bottom-style: solid;
-  border-bottom-color: #0d132188;
-  border-radius: 0%;
+  border-bottom-style: groove;
   background: none;
 }
 
 .input-group-text {
-  @include text-box()
+  @include text-box();
 }
 
-.input-group .form-control{
-  @include text-box;
+.form-inline .input-group .form-control{
+  @include text-box();
 }
 
 .statcode{
