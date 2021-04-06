@@ -15,19 +15,6 @@ function shareOptions(opt) {
   shareBtn.innerHTML = chosenOption.value;
 }
 
-function validateForm() {
-  $("btn-submit").on("submit", function (event) {
-    event.preventDefault();
-  });
-
-  var status_code = $(".").val();
-  var status_content = $(".").val();
-  var status_date = $(".").val();
-  var status_visibility = $(".btn-check").val();
-  var status_permissions = $(".form-check-input").val();
-
-  $(".test-result");
-}
 
 function initializePoppers() {
   var popoverTriggerList = [].slice.call(
@@ -45,5 +32,13 @@ function initializePoppers() {
   });
 }
 
-function checkStatusCode() {}
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "200px";
+  document.getElementById("toggleBtn").style.marginLeft = "200px";
+}
 
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+  document.getElementById("toggleBtn").style.marginLeft = "0";
+}

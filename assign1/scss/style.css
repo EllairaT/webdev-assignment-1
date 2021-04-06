@@ -4,17 +4,17 @@ header {
 }
 
 body {
-  background-image: url("../images/bg.jpg");
+  background-image: url("../images/bg2.jpg");
   background-size: auto;
 }
 
 .display-4 {
   font-weight: 100;
-  color: white;
+  color: #f0ebd8;
 }
 
-.card, .main-card {
-  background-color: #f0ebd896;
+.main-card {
+  background-color: rgba(40, 0, 43, 0.185);
   display: inline-block;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
@@ -26,15 +26,115 @@ body {
 }
 
 .input-group-text {
-  background: none;
-  border: none;
-}
-
-input, .form-control {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: groove;
   background: none;
+  color: #f0ebd8;
+}
+
+.input-group .form-control {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background: none;
+  color: #f0ebd8;
+}
+
+.input-group .form-inline {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background: none;
+  color: #f0ebd8;
+  border-bottom-style: dotted;
+}
+
+::-webkit-input-placeholder {
+  color: #dfbbdc3b;
+}
+
+:-ms-input-placeholder {
+  color: #dfbbdc3b;
+}
+
+::-ms-input-placeholder {
+  color: #dfbbdc3b;
+}
+
+::placeholder {
+  color: #dfbbdc3b;
+}
+
+.visibility-badge {
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #ebcceb;
+}
+
+ul .list-group-item {
+  background-color: transparent;
+  color: darkgray;
+}
+
+.index-card {
+  background-color: rgba(40, 0, 43, 0.185);
+  color: #f0ebd8;
+}
+
+blockquote p {
+  font-size: 0.8em !important;
+}
+
+cite {
+  color: #748cab;
+}
+
+.sidepanel {
+  position: relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.sidepanel a {
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
 }
 /*# sourceMappingURL=style.css.map */

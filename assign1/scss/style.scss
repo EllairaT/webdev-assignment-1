@@ -1,23 +1,24 @@
 /* color palette */
+
 $rich-black: #0d1321;
 $prussian-blue: #1d2d44;
 $black-coral: #3e5c76;
 $shadow-blue: #748cab;
 $eggshell: #f0ebd8;
-$card-bg: rgba(239, 234, 215, 0.588);
+$card-bg: rgba(40, 0, 43, 0.185);
 
 header {
   background: $eggshell;
 }
 
 body {
-  background-image: url("../images/bg.jpg");
+  background-image: url("../images/bg2.jpg");
   background-size: auto;
 }
 
 .display-4 {
   font-weight: 100;
-  color: white;
+  color: $eggshell;
 }
 
 .main-card {
@@ -36,20 +37,87 @@ body {
   border-left-style: hidden;
   border-bottom-style: groove;
   background: none;
+  color: $eggshell;
 }
 
 .input-group-text {
   @include text-box();
 }
 
-.form-inline .input-group .form-control{
+.input-group .form-control {
   @include text-box();
 }
-
-.statcode{
-  width: 10%;
+.input-group .form-inline {
+  @include text-box();
+  border-bottom-style: dotted;
 }
 
-.visibility-badge{
+::placeholder {
+  color: #dfbbdc3b;
+}
+.visibility-badge {
   padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #ebcceb;
+}
+
+ul .list-group-item {
+  background-color: transparent;
+  color: darkgray;
+}
+
+.index-card {
+  background-color: $card-bg;
+  color: $eggshell;
+}
+
+blockquote p {
+  font-size: 0.8em !important;
+}
+
+cite {
+  color: $shadow-blue;
+}
+
+.sidepanel  {
+  position:relative;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidepanel a {
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.2s;
+}
+
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color:#444;
 }
