@@ -1,24 +1,19 @@
 /* color palette */
-header {
-  background: #f0ebd8;
-}
-
 body {
   background-image: url("../images/bg2.jpg");
   background-size: auto;
 }
 
-.display-4 {
-  font-weight: 100;
-  color: #f0ebd8;
-}
-
-.main-card {
+.card.main-card {
   background-color: rgba(40, 0, 43, 0.185);
   display: inline-block;
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+}
+
+.main-container {
+  margin-top: 10%;
 }
 
 .lead {
@@ -78,9 +73,21 @@ a {
   color: #ebcceb;
 }
 
+a:hover {
+  color: #370c42;
+}
+
+a.lead {
+  color: #ebcceb;
+}
+
+a.lead:hover {
+  color: #370c42;
+}
+
 ul .list-group-item {
+  color: #748cab;
   background-color: transparent;
-  color: darkgray;
 }
 
 .index-card {
@@ -93,51 +100,49 @@ blockquote p {
 }
 
 cite {
-  color: #748cab;
+  color: #e48e1e;
 }
 
-.sidepanel {
-  position: relative;
-  z-index: 1;
-  width: 0;
-  left: 0;
+.nav-link {
+  margin-bottom: 20%;
+  margin-top: 20%;
+}
+
+.accordion-button {
+  background-color: rgba(40, 0, 43, 0.185);
+}
+
+.accordion-body {
+  background-color: rgba(40, 0, 43, 0.185);
+}
+
+.navbar {
   background-color: #010a1f6e;
-  overflow-x: hidden;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  height: auto;
 }
 
-.sidepanel a {
-  text-decoration: none;
-  color: #ebcceb;
+.navbar-brand {
+  font-size: 2.5em;
+}
+
+.navbar-brand .lead {
   display: block;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  font-size: 15px;
-  text-align: center;
+  color: whitesmoke;
+  margin-left: 75%;
+  margin-top: -7%;
 }
 
-.sidepanel a:hover {
-  color: #f1f1f1;
+.main-content {
+  margin-top: 10%;
 }
 
-.openbtn {
-  cursor: pointer;
-  background-color: #010a1f6e;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  position: relative;
-}
-
-.openbtn:hover {
-  background-color: #444;
-}
-
-@media (max-width: 1000px) {
-  .mx-w-100 {
-    max-width: 100% !important;
-  }
+.fanta-box-header {
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  z-index: 1;
+  margin-bottom: -10px;
+  font-weight: 100;
+  font-size: 2.5em;
+  color: #e48e1e;
 }
 /*# sourceMappingURL=style.css.map */

@@ -2,7 +2,7 @@
 include 'dbcon.php';
 
 Connect();
-//session_start();
+
 //sometimes the server is set up for a different timezone. This is to make sure the timezone is correct (for us)
 date_default_timezone_set('Pacific/Auckland');
 
@@ -30,19 +30,33 @@ date_default_timezone_set('Pacific/Auckland');
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg mb-3 mb-lg-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="whispurr logo" width="50" height="50" class="mx-2">
+                whispurr
+                <small class="lead"><i>keep meowing</i></small>
+            </a>
+        </div>
+    </nav>
+
     <div class="content center-block text-center">
-        <!-- Header -->
-        <div class="container">
-            <div class="jumbotron">
-                <h1 class="display-4">whispurr</h1>
-                <p class="lead">keep meowing</p>
-                <hr class="my-4">
+        <div class="d-flex justify-content-center float-start">
+            <div class="my-auto">
+                <a href="poststatusform.php" class="nav-link d-sm-block d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Post New Status"><i class="bi bi-pencil-fill h3"></i></a>
+
+                <a href="searchstatusform.html" class="nav-link d-sm-block d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Search for status"><i class="bi bi-search h3"></i></a>
+
+                <a href="about.html" class="nav-link d-sm-block d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="About this assignment"><i class="bi bi-info-square h3"></i></a>
+
+                <a href="https://github.com/EllairaT/webdev-assignment-1" target="_blank" class="nav-link d-sm-block d-inline-block" data-bs-toggle="tooltip" data-bs-placement="right" title="Open on Github"><i class="bi bi-github h3"></i></a>
             </div>
+        </div>
+        <div class="container main-container">
             <form action="poststatusprocess.php" method="POST">
                 <!------------------------ START OF CARD ------------------------>
-                <div class="card main-card text-md-start mx-auto my-auto" style="width: 50%;">
-                    <!--Card Header contains status code and date -->
-
+                <div class="card main-card text-md-start mx-auto my-auto" style="width: 70%;">
+                    <!--CARD HEADER -->
                     <div class="card-header navbar">
                         <!-- Status Code -->
                         <div class="d-inline statcode">
@@ -65,7 +79,6 @@ date_default_timezone_set('Pacific/Auckland');
 
                     <!-- Start of card body -->
                     <div class="card-body">
-
                         <!--Visibility; show to friends is the default option-->
                         <div>
                             <div class="btn-group dropend">
@@ -110,8 +123,7 @@ date_default_timezone_set('Pacific/Auckland');
                                 </div>
                             </div>
                         </div>
-                        <!-- end of visibility -->
-
+            
 
                         <!--Status field -->
                         <div>
@@ -165,9 +177,9 @@ date_default_timezone_set('Pacific/Auckland');
                         </div>
                     </div>
                 </div>
+                <!------------------------ End of card ------------------------>
+            </form>
         </div>
-        <!------------------------ End of card ------------------------>
-        </form>
     </div>
 </body>
 </div>

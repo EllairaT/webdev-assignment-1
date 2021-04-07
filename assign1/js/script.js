@@ -31,19 +31,3 @@ function initializePoppers() {
   });
 }
 
-function openNav() {
-  document.getElementById("mySidepanel").style.width = "200px";
-}
-
-// Setting the width of the sidebar to 0 (hide it)
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-}
-
-function toggleNav() {
-  if (document.getElementById("mySidepanel").offsetWidth > 0) {
-    closeNav();
-  } else {
-    openNav();
-  }
-}

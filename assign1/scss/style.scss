@@ -6,26 +6,22 @@ $black-coral: #3e5c76;
 $shadow-blue: #748cab;
 $eggshell: #f0ebd8;
 $card-bg: rgba(40, 0, 43, 0.185);
-$link-cl : #ebcceb;
-
-header {
-  background: $eggshell;
-}
+$link-cl: #ebcceb;
+$fanta-orange: #e48e1e;
 
 body {
   background-image: url("../images/bg2.jpg");
   background-size: auto;
 }
 
-.display-4 {
-  font-weight: 100;
-  color: $eggshell;
-}
-
-.main-card {
+.card.main-card {
   background-color: $card-bg;
   display: inline-block;
   justify-content: left;
+}
+
+.main-container{
+  margin-top: 10%;
 }
 
 .lead {
@@ -56,6 +52,7 @@ body {
 ::placeholder {
   color: #dfbbdc3b;
 }
+
 .visibility-badge {
   padding: 10px;
 }
@@ -65,9 +62,21 @@ a {
   color: $link-cl;
 }
 
+a:hover {
+  color: #370c42;
+}
+
+a.lead {
+  color: $link-cl;
+}
+
+a.lead:hover {
+  color: #370c42;
+}
+
 ul .list-group-item {
+  color: #748cab;
   background-color: transparent;
-  color: darkgray;
 }
 
 .index-card {
@@ -80,48 +89,48 @@ blockquote p {
 }
 
 cite {
-  color: $shadow-blue;
+  color: $fanta-orange;
 }
 
-.sidepanel  {
-  position:relative;
-  z-index: 1;
-  width: 0;
-  left: 0;
+.nav-link {
+  margin-bottom: 20%;
+  margin-top: 20%;
+}
+
+.accordion-button {
+  background-color: $card-bg;
+}
+
+.accordion-body {
+  background-color: $card-bg;
+}
+
+.navbar {
   background-color: $rich-black;
-  overflow-x: hidden;
-  transition: 0.5s;
-  height: auto;
 }
 
-.sidepanel a {
-  text-decoration: none;
-  color: $link-cl;
+.navbar-brand {
+  font-size: 2.5em;
+}
+
+.navbar-brand .lead {
   display: block;
-  transition: 0.2s;
-  font-size: 15px;
-  text-align: center;
+  color: whitesmoke;
+  margin-left: 75%;
+  margin-top: -7%;
 }
 
-.sidepanel a:hover {
-  color: #f1f1f1;
+.main-content{
+  margin-top:10%;
 }
 
-.openbtn {
-  cursor: pointer;
-  background-color:  $rich-black;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  position: relative;
-}
-
-.openbtn:hover {
-  background-color:#444;
-}
-
-@media (max-width: 1000px) {
-  .mx-w-100 {
-    max-width: 100% !important;
-  }
+.fanta-box-header {
+  position: absolute;
+  left: 45%;
+  top: 20%;
+  z-index: 1;
+  margin-bottom: -10px;
+  font-weight:100;
+  font-size: 2.5em;
+  color: $fanta-orange;
 }
