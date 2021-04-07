@@ -117,7 +117,7 @@ date_default_timezone_set('Pacific/Auckland');
                         <div>
                             <div class="form-group" id="stat-field">
                                 <div class="input-group form-group">
-                                    <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[A-Za-z0-9\(\)._\-‘\?!]+" placeholder="Got something to say?" autocomplete="off" />
+                                    <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[A-Za-z0-9\(\)._\-‘\?! ]+" placeholder="Got something to say?" autocomplete="off" />
                                 </div>
                             </div>
                         </div>

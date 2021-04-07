@@ -99,42 +99,45 @@ cite {
 .sidepanel {
   position: relative;
   z-index: 1;
-  top: 0;
+  width: 0;
   left: 0;
-  background-color: #111;
+  background-color: #010a1f6e;
   overflow-x: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  height: auto;
 }
 
 .sidepanel a {
   text-decoration: none;
-  color: #818181;
+  color: #ebcceb;
   display: block;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  font-size: 15px;
+  text-align: center;
 }
 
 .sidepanel a:hover {
   color: #f1f1f1;
 }
 
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-}
-
 .openbtn {
   cursor: pointer;
-  background-color: #111;
+  background-color: #010a1f6e;
   color: white;
   padding: 10px 15px;
   border: none;
+  position: relative;
 }
 
 .openbtn:hover {
   background-color: #444;
+}
+
+@media (max-width: 1000px) {
+  .mx-w-100 {
+    max-width: 100% !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */

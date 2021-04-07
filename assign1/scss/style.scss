@@ -1,11 +1,12 @@
 /* color palette */
 
-$rich-black: #0d1321;
+$rich-black: #010a1f6e;
 $prussian-blue: #1d2d44;
 $black-coral: #3e5c76;
 $shadow-blue: #748cab;
 $eggshell: #f0ebd8;
 $card-bg: rgba(40, 0, 43, 0.185);
+$link-cl : #ebcceb;
 
 header {
   background: $eggshell;
@@ -61,7 +62,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #ebcceb;
+  color: $link-cl;
 }
 
 ul .list-group-item {
@@ -85,39 +86,42 @@ cite {
 .sidepanel  {
   position:relative;
   z-index: 1;
-  top: 0;
+  width: 0;
   left: 0;
-  background-color: #111;
+  background-color: $rich-black;
   overflow-x: hidden;
   transition: 0.5s;
+  height: auto;
 }
 
 .sidepanel a {
   text-decoration: none;
-  color: #818181;
+  color: $link-cl;
   display: block;
   transition: 0.2s;
+  font-size: 15px;
+  text-align: center;
 }
 
 .sidepanel a:hover {
   color: #f1f1f1;
 }
 
-.sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-}
-
 .openbtn {
   cursor: pointer;
-  background-color: #111;
+  background-color:  $rich-black;
   color: white;
   padding: 10px 15px;
   border: none;
+  position: relative;
 }
 
 .openbtn:hover {
   background-color:#444;
+}
+
+@media (max-width: 1000px) {
+  .mx-w-100 {
+    max-width: 100% !important;
+  }
 }
