@@ -1,11 +1,31 @@
 //adds or removes permission badges
 function addPermission(perm) {
   var badge = document.getElementById(perm + "-badge");
-  if (badge.style.display === "none") {
+  if (badge.style.display == "none" || badge.checked) {
     badge.style.display = "block";
   } else {
     badge.style.display = "none";
   }
+}
+
+function checkStatusCode() {
+  var code = $(".id-input").val();
+  $.ajax({
+    url: "poststatusprocess.php",
+    method: "POST",
+    data: {
+      statuscode: code,
+    },
+    success: function (data) {
+      console.log(data);
+      if (data.status == "success") {
+        $("#error-msg").removeClass("text-danger").addClass("text-success");
+      } else if (data.status == "error") {
+        $("#error-msg").removeClass("text-success").addClass("text-danger");
+      }
+      $("#error-msg").text(data.status_message);
+    },
+  });
 }
 
 //changes share button text when another option is selected
@@ -31,3 +51,28 @@ function initializePoppers() {
   });
 }
 
+//shorthand for $(document).ready()
+$(function () {
+  initializePoppers();
+
+  $(".id-input").on("change", function (e) {
+    e.preventDefault();
+    var code = $(".id-input").val();
+    $.ajax({
+      url: "poststatusprocess.php",
+      method: "POST",
+      data: {
+        statuscode: code,
+      },
+      success: function (data) {
+        console.log(data);
+        if (data.status == "success") {
+          $("#error-msg").removeClass("text-danger").addClass("text-success");
+        } else if (data.status == "error") {
+          $("#error-msg").removeClass("text-success").addClass("text-danger");
+        }
+        $("#error-msg").text(data.status_message);
+      },
+    });
+  });
+});

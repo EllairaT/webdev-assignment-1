@@ -103,11 +103,6 @@ cite {
   color: #e48e1e;
 }
 
-.nav-link {
-  margin-bottom: 20%;
-  margin-top: 20%;
-}
-
 .accordion-button {
   background-color: rgba(40, 0, 43, 0.185);
 }
@@ -137,7 +132,7 @@ cite {
 
 .fanta-box-header {
   position: absolute;
-  left: 45%;
+  left: 50%;
   top: 20%;
   z-index: 1;
   margin-bottom: -10px;
