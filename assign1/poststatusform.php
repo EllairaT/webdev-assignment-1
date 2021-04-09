@@ -3,9 +3,6 @@ include 'dbcon.php';
 
 Connect();
 
-//sometimes the server is set up for a different timezone. This is to make sure the timezone is correct (for us)
-date_default_timezone_set('Pacific/Auckland');
-
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +40,7 @@ date_default_timezone_set('Pacific/Auckland');
 
     <div class="container-fluid row g-0 content center-block text-center">
         <div class="col-10 container main-container">
-            <form action="poststatusprocess.php" method="POST" id="post_form">
+            <form action="poststatusprocess.php" method="POST" id="post_form" name="statusform">
                 <!------------------------ START OF CARD ------------------------>
                 <div class="card main-card text-md-start" style="width: 50%;">
                     <!--CARD HEADER -->
@@ -63,7 +60,7 @@ date_default_timezone_set('Pacific/Auckland');
                         <!--Date-->
                         <div class="form-inline w-25">
                             <div class="input-group">
-                                <input type="date" class="form-control bg-transparent px-0" name="date" id="postdate" value="<?php echo date('Y-m-d'); ?>" />
+                                <input type="date" class="form-control bg-transparent px-0" name="Date" id="postdate" value="<?php echo date('Y-m-d'); ?>" />
                             </div>
                         </div>
                     </div>
@@ -81,19 +78,19 @@ date_default_timezone_set('Pacific/Auckland');
                                 </span>
 
                                 <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="sharedropdownmenu">
-                                    <input type="radio" class="btn-check" name="share-options" id="onlyme" autocomplete="off" value="Only Me" onClick="shareOptions('onlyme')">
+                                    <input type="radio" class="btn-check" name="shareoptions" id="onlyme" autocomplete="off" value="Only Me" onClick="shareOptions('onlyme')">
                                     <label class="btn btn-secondary dropdown-item" for="onlyme">
                                         <img src="..\node_modules\bootstrap-icons\icons\person-circle.svg" width="auto" height="auto">
                                         Only me
                                     </label>
 
-                                    <input type="radio" class="btn-check" name="share-options" id="onlyfriends" autocomplete="off" value="Friends" onClick="shareOptions('onlyfriends')" checked>
+                                    <input type="radio" class="btn-check" name="shareoptions" id="onlyfriends" autocomplete="off" value="Friends" onClick="shareOptions('onlyfriends')" checked>
                                     <label class="btn btn-secondary dropdown-item" for="onlyfriends">
                                         <img src="..\node_modules\bootstrap-icons\icons\people-fill.svg" width="auto" height="auto">
                                         Friends
                                     </label>
 
-                                    <input type="radio" class="btn-check" name="share-options" id="public" autocomplete="off" value="Public" onClick="shareOptions('public')">
+                                    <input type="radio" class="btn-check" name="shareoptions" id="public" autocomplete="off" value="Public" onClick="shareOptions('public')">
                                     <label class="btn btn-secondary dropdown-item" for="public">
                                         <img src="..\node_modules\bootstrap-icons\icons\globe.svg" width="auto" height="auto">
                                         Public
@@ -120,7 +117,7 @@ date_default_timezone_set('Pacific/Auckland');
                         <div>
                             <div class="form-group" id="stat-field">
                                 <div class="input-group form-group">
-                                    <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[A-Za-z0-9\(\)._\-‘\?! ]+" placeholder="Got something to say?" autocomplete="off" required />
+                                    <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[A-Za-z0-9.,\?! ]+" placeholder="Got something to say?" autocomplete="off" required />
                                 </div>
                             </div>
                         </div>
@@ -162,9 +159,8 @@ date_default_timezone_set('Pacific/Auckland');
                         </div>
 
                         <!--Submit button -->
-
                         <div class="mt-2 mb-2 float-end">
-                            <input type="submit" class="btn btn-primary btn-submit" name="submit" value="Submit" id="post-submit">
+                            <input type="button" class="btn btn-primary btn-submit" name="submitbtn" value="Submit" id="postsubmit">
                         </div>
                     </div>
                 </div>

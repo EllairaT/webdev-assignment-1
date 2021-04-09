@@ -9,13 +9,11 @@ function addPermission(perm) {
 }
 
 function checkStatusCode() {
-  var code = $(".id-input").val();
+  var code = $("#sc").val();
   $.ajax({
     url: "poststatusprocess.php",
     method: "POST",
-    data: {
-      statuscode: code,
-    },
+    data: { action: "1", statuscode: code },
     success: function (data) {
       console.log(data);
       if (data.status == "success") {
@@ -24,6 +22,19 @@ function checkStatusCode() {
         $("#error-msg").removeClass("text-success").addClass("text-danger");
       }
       $("#error-msg").text(data.status_message);
+    },
+  });
+}
+
+function submitForm() {
+  var form = $("#post_form").serialize();
+  console.log(form);
+  $.ajax({
+    url: "poststatusprocess.php",
+    method: "POST",
+    data: { action: "2", formdata: form },
+    success: function (data) {
+      console.log(data);
     },
   });
 }
@@ -55,24 +66,14 @@ function initializePoppers() {
 $(function () {
   initializePoppers();
 
-  $(".id-input").on("change", function (e) {
+  $("#sc").on("change", function (e) {
     e.preventDefault();
-    var code = $(".id-input").val();
-    $.ajax({
-      url: "poststatusprocess.php",
-      method: "POST",
-      data: {
-        statuscode: code,
-      },
-      success: function (data) {
-        console.log(data);
-        if (data.status == "success") {
-          $("#error-msg").removeClass("text-danger").addClass("text-success");
-        } else if (data.status == "error") {
-          $("#error-msg").removeClass("text-success").addClass("text-danger");
-        }
-        $("#error-msg").text(data.status_message);
-      },
-    });
+    checkStatusCode();
   });
+
+  $("#postsubmit").on("click", function (e) {
+    e.preventDefault();
+    submitForm();
+  });
+
 });

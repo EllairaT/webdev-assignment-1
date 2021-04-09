@@ -44,6 +44,7 @@ body {
 .input-group .form-control {
   @include text-box();
 }
+
 .input-group .form-inline {
   @include text-box();
   border-bottom-style: dotted;
