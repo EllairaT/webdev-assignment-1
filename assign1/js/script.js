@@ -28,12 +28,17 @@ function checkStatusCode() {
 
 function submitForm() {
   var form = $("#post_form").serialize();
-  console.log(form);
   $.ajax({
     url: "poststatusprocess.php",
     method: "POST",
     data: { action: "2", formdata: form },
     success: function (data) {
+      if(data.status == "success"){
+        console.log("ey lmao");
+      } 
+      else{
+        console.log("oof");
+      }
       console.log(data);
     },
   });
