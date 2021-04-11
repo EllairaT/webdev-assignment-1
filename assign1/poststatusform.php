@@ -21,7 +21,7 @@ Connect();
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg mb-3 mb-lg-5">
+    <nav class="navbar navbar-expand-lg mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" alt="whispurr logo" width="50" height="50" class="mx-2">
@@ -37,6 +37,23 @@ Connect();
 
         <a href="https://github.com/EllairaT/webdev-assignment-1" target="_blank" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Open on Github"><i class="bi bi-github h3"></i></a>
     </nav>
+
+
+    <!-- Alerts for user submission -->
+    <div class="post-alert w-25" id="alert-success">
+        <div class="alert alert-success alert-dismissible fade" role="alert">
+            <strong>Success!</strong> Your status was posted!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="post-alert w-25" id="alert-error">
+        <div class="alert alert-danger alert-dismissible fade" role="alert">
+            <strong>Uh oh!</strong> Something went wrong.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    <!-- end of alerts -->
 
     <div class="container-fluid row g-0 content center-block text-center">
         <div class="col-10 container main-container">
@@ -117,10 +134,11 @@ Connect();
                         <div>
                             <div class="form-group" id="stat-field">
                                 <div class="input-group form-group">
-                                    <input type="text" class="form-control mt-3" name="status" id="statustext" pattern="[A-Za-z0-9.,\?! ]+" placeholder="Got something to say?" autocomplete="off" required />
+                                    <input type="text" class="form-control mt-3" name="status" id="statustext"  placeholder="Got something to say?" autocomplete="off" required />
                                 </div>
                             </div>
                         </div>
+                        <div><small id="post-error-msg" class="text-danger"></small></div>
 
                         <!--collapse button -->
                         <button class="btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapsePermissions" aria-expanded="true" aria-controls="collapsePermissions">

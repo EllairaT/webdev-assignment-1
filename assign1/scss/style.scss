@@ -93,11 +93,6 @@ cite {
   color: $fanta-orange;
 }
 
-// .nav-link {
-//   margin-bottom: 20%;
-//   margin-top: 20%;
-// }
-
 .accordion-button {
   background-color: $card-bg;
 }
@@ -133,4 +128,8 @@ cite {
   margin-bottom: -10px;
   font-weight:100;
   color: $fanta-orange;
+}
+
+.post-alert{
+  position: relative;
 }
