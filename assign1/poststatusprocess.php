@@ -1,6 +1,5 @@
 <?php
-header("Content-type: application/json");
-
+ header("Content-type: application/json");
 include 'dbcon.php';
 $conn = Connect();
 
@@ -23,24 +22,17 @@ function insertToTable($d, &$r)
     $status_visibility = $d['shareoptions'];
     $status_permissions = $d['permissions'];
 
-    if(doesCodeExist($status_code) || isPostValid($status_content)){
-        return false;
-    }
-
-
-
-    if (!is_null($status_permissions)) {
-        foreach ($status_permissions as $p) {
-            $insert_perm->execute();
-        }
-    }
-
-    $insert_perm->close();
-
     if ($insert_cont->execute()) {
+        if (!is_null($status_permissions)) {
+            foreach ($status_permissions as $p) {
+                $insert_perm->execute();
+            }
+        }
         $insert_cont->close();
+        $insert_perm->close();
         return true;
-    } else {
+    }
+    else{
         return false;
     }
 }
@@ -86,7 +78,7 @@ function isCodeValid($code)
 $form_data = array();
 
 //creating and initialising an array to store the server response in, which will then be sent back to the client. 
-$response = array('status' => 'Error', 'statusmessage' => '', 'submitmessage' => 'Post not submitted.');
+$response = array('status' => 'Error', 'statusmessage' => '', 'submitmessage' => 'Post not submitted.', 'redirect' => '');
 
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
@@ -116,12 +108,13 @@ if (isset($_POST['action'])) {
         case "3":
             parse_str($_POST['formdata'], $form_data);
 
-            if(insertToTable($form_data, $response)){
+            if (insertToTable($form_data, $response)) {
                 $response['status'] = 'Success';
-            } 
-            else{
+            
+            } else {
                 $response['statusmessage'] = "Something went wrong.";
             }
+            $response['redirect'] =  'poststatusform.php' ;
         default:
             break;
     }
