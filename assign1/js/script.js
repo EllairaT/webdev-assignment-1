@@ -1,6 +1,3 @@
-
-var code = 0;
-var post = 0;
 //adds or removes permission badges
 function addPermission(perm) {
   var badge = document.getElementById(perm + "-badge");
@@ -18,13 +15,14 @@ function checkStatusCode() {
     method: "POST",
     data: { action: "1", statuscode: statcode },
     success: function (data) {
-      $("#error-msg").text(data.statusmessage);
-      if (data.status == "Error") {
-        code = 0;
-      } else {
-        console.log("success!");
+      if (data.status == "Success") {
         code = 1;
+        $("#error-msg").text("");
+      } else {
+        code = 0;
+        $("#error-msg").text(data.statusmessage);
       }
+      watch();
     },
   });
 }
@@ -35,42 +33,34 @@ function checkStatusPost() {
     url: "poststatusprocess.php",
     method: "POST",
     data: { action: "2", statuspost: statpost },
-    success: function (text) {
-      $("#post-error-msg").text(text.statusmessage);
-      if (text.status == "Error") {
-        post = 0;
-      } else {
-        console.log("success!");
+    success: function (data) {
+      if (data.status == "Success") {
         post = 1;
+        $("#post-error-msg").text("");
+      } else {
+        post = 0;
+        $("#post-error-msg").text(data.statusmessage);
       }
+      watch();
     },
   });
 }
 
 function submitForm() {
-  var form = $("#post_form").serialize();
-  $.ajax({
-    url: "poststatusprocess.php",
-    method: "POST",
-    data: { action: "3", formdata: form },
-    success: function (post) {
-      if (post.status == "Success") {
-        $("#post_form").trigger("reset");
-      } else {
-       
-      }
-    },
-  });
+  console.log(form);
 }
 
 function clearForm() {
-  var form = $("#post_form");
-  form.trigger("reset");
-  // form.find("input:text").val("");
-  // form.find("input:checkbox").removeAttr("checked");
-  // form.find("input:radio").prop("checked", function () {
-  //   $("#onlyfriends").attr("checked") == "checked";
-  // });
+  $("#post_form").trigger("reset");
+  $("input:checked").removeAttr("checked");
+
+  $(".badge").each(function () {
+    $(this).attr("style", "display: none");
+  });
+
+  code = 0;
+  post = 0;
+  $("#postsubmit").prop("disabled", true);
 }
 
 //changes share button text when another option is selected
@@ -96,22 +86,63 @@ function initializePoppers() {
   });
 }
 
+function watch() {
+  if (code == 1 && post == 1) {
+    $("#postsubmit").prop("disabled", false);
+  } else {
+    $("#postsubmit").prop("disabled", true);
+  }
+}
+
+function toggleAlert(type) {
+  if (type == "Success") {
+    $(".toast-success").toast("show");
+  } else {
+    $(".toast-error").toast("show");
+  }
+}
+
+//global variables
+code = 0;
+post = 0;
+
 //shorthand for $(document).ready()
 $(function () {
   initializePoppers();
 
-  $("#sc").on("change", function (e) {
+  $("#sc").on("input", function (e) {
     e.preventDefault();
     checkStatusCode();
   });
 
-  $("#statustext").on("change", function (e) {
+  $("#statustext").on("input", function (e) {
     e.preventDefault();
     checkStatusPost();
   });
 
   $("#postsubmit").on("click", function (e) {
+    var ajaxSubmitted = false;
     e.preventDefault();
-    submitForm();
+    var thisForm = $("#post_form").serialize();
+    $.ajax({
+      url: "poststatusprocess.php",
+      method: "POST",
+      dataType: "json",
+      data: { action: "3", formdata: thisForm },
+      success: function (post) {
+        if (post.status == "Success") {
+          ajaxSubmitted = true;
+          $("#notif").modal("show");
+          $("#notif").on("hidden.bs.modal", function () {
+            clearForm();
+            $("form").attr("action", "poststatusform.php");
+            $("form").trigger("submit");
+          });
+        } else {
+          $("#notif-error").modal("show");
+        }
+      },
+    });
+    return ajaxSubmitted;
   });
 });
