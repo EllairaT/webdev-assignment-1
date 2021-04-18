@@ -46,10 +46,6 @@ function checkStatusPost() {
   });
 }
 
-function submitForm() {
-  console.log(form);
-}
-
 function clearForm() {
   $("#post_form").trigger("reset");
   $("input:checked").removeAttr("checked");
@@ -86,6 +82,7 @@ function initializePoppers() {
   });
 }
 
+//check if all inputs are valid. if yes, enable the submit button
 function watch() {
   if (code == 1 && post == 1) {
     $("#postsubmit").prop("disabled", false);
@@ -94,12 +91,19 @@ function watch() {
   }
 }
 
-function toggleAlert(type) {
-  if (type == "Success") {
-    $(".toast-success").toast("show");
-  } else {
-    $(".toast-error").toast("show");
-  }
+function checkTables(string) {
+  $.ajax({
+    url: "searchstatusprocess.php",
+    method: "GET",
+    dataType: "text",
+    data: { searchpost: string },
+    success: function (data) {
+      $("#posts").html(data);
+    },
+    error: function (data, error) {
+      console.log("something went wrong: " + error);
+    },
+  });
 }
 
 //global variables
@@ -120,17 +124,56 @@ $(function () {
     checkStatusPost();
   });
 
+  $("#searchpost").on("keyup", function (e) {
+    e.preventDefault();
+    var searchString = $("#searchpost").val();
+
+    if (searchString != "") {
+      checkTables(searchString);
+    } else {
+      checkTables();
+    }
+  });
+
+  $("#searchpost").on("keydown", function (e) {
+    if (e.key == "Enter") {
+      e.preventDefault();
+    }
+  });
+
   $("#postsubmit").on("click", function (e) {
     var ajaxSubmitted = false;
     e.preventDefault();
-    var thisForm = $("#post_form").serialize();
+
+    var formCode = $("#sc").val();
+    var formDate = $("#postdate").val();
+    var formContent = $("#statustext").val();
+    var formShare = $(".btn-check").val();
+    var perms = [];
+
+    $("input:checkbox[name=type]:checked").each(function () {
+      perms.push($(this).val());
+    });
+
+    if (perms == "undefined" || perms.length == 0) {
+      perms = "No perms";
+    }
+
     $.ajax({
       url: "poststatusprocess.php",
       method: "POST",
-      dataType: "json",
-      data: { action: "3", formdata: thisForm },
+      dataType: "text",
+      data: {
+        action: "3",
+        statuscode: formCode,
+        status: formContent,
+        date: formDate,
+        shareoptions: formShare,
+        permissions: perms,
+      },
       success: function (post) {
-        if (post.status == "Success") {
+        $response = JSON.parse(post);
+        if ($response.status == "Success") {
           ajaxSubmitted = true;
           $("#notif").modal("show");
           $("#notif").on("hidden.bs.modal", function () {

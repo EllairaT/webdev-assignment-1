@@ -144,7 +144,7 @@ Connect();
                                         <div class="form-check form-check-inline" data-bs-toggle="tooltip" title="Comment">
                                             <label>
                                                 <input class="form-check-input" type="checkbox" name="permissions[]" value="comment" id="commentCheck" onClick="addPermission('comment')">
-                                                <i class="bi bi bi-chat-square-dots-fill text-info" style="font-size:20px;" width="auto" height="auto"></i>
+                                                <i class="bi bi-chat-square-dots-fill text-info" style="font-size:20px;" width="auto" height="auto"></i>
                                             </label>
                                         </div>
 
@@ -162,7 +162,7 @@ Connect();
 
                             <!--Submit button -->
                             <div class="mt-2 mb-2 float-end">
-                                <input type="submit" class="btn btn-primary btn-submit" name="submitbtn" value="Submit" id="postsubmit" disabled>
+                                <input type="submit" class="btn btn-primary btn-submit" name="submitbtn" value="Submit" id="postsubmit">
                             </div>
                         </div>
                     </div>
