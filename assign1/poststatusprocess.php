@@ -22,19 +22,20 @@ function insertToTable($data)
     $status_visibility = $data['options'];
     $status_permissions = $data['perms'];
 
-
     if (!validateDate($status_date)) {
         return false;
     }
 
     if ($insert_cont->execute()) {
-        if (!$status_permissions == "No perms") {      
-            foreach ($status_permissions as $p) {
+
+        foreach ($status_permissions as $p) {
+            if (!$p == 'No perms') {
                 $insert_perm->execute();
-            }    
-        } 
+            }
+        }
+
         return true;
-    } else{
+    } else {
         return false;
     }
 }

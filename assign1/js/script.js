@@ -98,6 +98,7 @@ function checkTables(string) {
     dataType: "text",
     data: { searchpost: string },
     success: function (data) {
+      console.log(data);
       $("#posts").html(data);
     },
     error: function (data, error) {
@@ -124,7 +125,7 @@ $(function () {
     checkStatusPost();
   });
 
-  $("#searchpost").on("keyup", function (e) {
+  $("#searchpost").on("input", function (e) {
     e.preventDefault();
     var searchString = $("#searchpost").val();
 
@@ -172,6 +173,7 @@ $(function () {
         permissions: perms,
       },
       success: function (post) {
+        console.log(post);
         $response = JSON.parse(post);
         if ($response.status == "Success") {
           ajaxSubmitted = true;
