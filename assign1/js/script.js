@@ -146,36 +146,15 @@ $(function () {
     var ajaxSubmitted = false;
     e.preventDefault();
 
-    var formCode = $("#sc").val();
-    var formDate = $("#postdate").val();
-    var formContent = $("#statustext").val();
-    var formShare = $(".btn-check").val();
-    var perms = [];
-
-    $("input:checkbox[name=type]:checked").each(function () {
-      perms.push($(this).val());
-    });
-
-    if (perms == "undefined" || perms.length == 0) {
-      perms = "No perms";
-    }
-
+    var thisForm = $("#post_form").serialize();
     $.ajax({
       url: "poststatusprocess.php",
       method: "POST",
-      dataType: "text",
-      data: {
-        action: "3",
-        statuscode: formCode,
-        status: formContent,
-        date: formDate,
-        shareoptions: formShare,
-        permissions: perms,
-      },
+      dataType: "json",
+      data: { action: "3", formdata: thisForm },
       success: function (post) {
         console.log(post);
-        $response = JSON.parse(post);
-        if ($response.status == "Success") {
+        if (post.status == "Success") {
           ajaxSubmitted = true;
           $("#notif").modal("show");
           $("#notif").on("hidden.bs.modal", function () {

@@ -3,7 +3,7 @@ header("Content-type: application/json");
 include 'dbcon.php';
 $conn = Connect();
 
-function insertToTable($data)
+function insertToTable($d)
 {
     global $conn;
 
@@ -16,24 +16,21 @@ function insertToTable($data)
     $insert_perm = $conn->prepare("INSERT INTO `post_permissions` (`post_permissions`.`code`,`post_permissions`.`permission_id`) VALUES (?, (SELECT `permissions`.`id` FROM `permissions` WHERE `permissions`.`name` = ?))");
     $insert_perm->bind_param("ss", $status_code, $p);
 
-    $status_code = "S" . $data['code'];
-    $status_content = $data['content'];
-    $status_date = $data['date'];
-    $status_visibility = $data['options'];
-    $status_permissions = $data['perms'];
+    $status_code = "S" . $d['statuscode'];
+    $status_content = $d['status'];
+    $status_date =  $d['Date'];
+    $status_visibility = $d['shareoptions'];
 
     if (!validateDate($status_date)) {
         return false;
     }
 
     if ($insert_cont->execute()) {
-
-        foreach ($status_permissions as $p) {
-            if (!$p == 'No perms') {
+        if (isset( $d['permissions'])) {
+            foreach ( $d['permissions'] as $p) {
                 $insert_perm->execute();
-            }
+             }
         }
-
         return true;
     } else {
         return false;
@@ -112,17 +109,10 @@ if (isset($_POST['action'])) {
             break;
 
         case "3":
-            $form_data = array(
-                'options' =>  $_POST['shareoptions'],
-                'content' => $_POST['status'],
-                'date' =>  $_POST['date'],
-                'code' =>  $_POST['statuscode'],
-                'perms' =>  $_POST['permissions']
-            );
+            parse_str($_POST['formdata'], $form_data);
 
             if (insertToTable($form_data)) {
                 $response['status'] = 'Success';
-                $response['statusmessage'] = "Data inserted.";
             } else {
                 $response['statusmessage'] = "Something went wrong.";
             }
