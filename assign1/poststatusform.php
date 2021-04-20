@@ -30,16 +30,21 @@ Connect();
                     <small class="lead">keep meowing</small>
                 </a>
             </div>
+            <a href="http://gdt5133.cmslamp14.aut.ac.nz/assign1/index.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Go back home"><i class="bi bi-house-fill h3"></i></a>
 
-            <a href="index.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Go back home"><i class="bi bi-house-fill h3"></i></a>
+            <a href="http://gdt5133.cmslamp14.aut.ac.nz/assign1/poststatusform.php" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Post new status"><i class="bi bi-pencil-fill h3"></i></a>
 
-            <a href="poststatusform.php" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Post new status"><i class="bi bi-pencil-fill h3"></i></a>
+            <a href="http://gdt5133.cmslamp14.aut.ac.nz/assign1/searchstatusform.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Search for status"><i class="bi bi-search h3"></i></a>
 
-            <a href="searchstatusform.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Search for status"><i class="bi bi-search h3"></i></a>
+            <a href="http://gdt5133.cmslamp14.aut.ac.nz/assign1/about.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="About this assignment"><i class="bi bi-info-square h3"></i></a>
 
-            <a href="about.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="About this assignment"><i class="bi bi-info-square h3"></i></a>
-
-            <a href="https://github.com/EllairaT/webdev-assignment-1" target="_blank" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Open on Github"><i class="bi bi-github h3"></i></a>
+            <a href="https://github.com/EllairaT/webdev-assignment-1" target="_blank" class="nav-link"
+                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Open on Github"><i
+                    class="bi bi-github h3"></i></a>
         </nav>
 
 
