@@ -30,7 +30,10 @@ Connect();
                     <small class="lead">keep meowing</small>
                 </a>
             </div>
-            <a href="poststatusform.php" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Post New Status"><i class="bi bi-pencil-fill h3"></i></a>
+
+            <a href="index.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Go back home"><i class="bi bi-house-fill h3"></i></a>
+
+            <a href="poststatusform.php" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Post new status"><i class="bi bi-pencil-fill h3"></i></a>
 
             <a href="searchstatusform.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Search for status"><i class="bi bi-search h3"></i></a>
 

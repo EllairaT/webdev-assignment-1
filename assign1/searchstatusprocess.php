@@ -29,16 +29,10 @@ function setIcon($text)
     return $iconCode;
 }
 
-
-$sql_perms = "SELECT post_permissions.code, permissions.name
-FROM post_permissions, permissions
-WHERE post_permissions.code = ?
-AND permissions.id = post_permissions.permission_id";
-
-$search_query =  $conn->prepare("SELECT posts.status_code, posts.content, posts.date, visibility.name AS 'share_with' FROM posts, post_permissions, visibility WHERE posts.content LIKE ? AND post_permissions.code = posts.status_code AND posts.visibility_id = visibility.id GROUP BY posts.status_code");
+$search_query =  $conn->prepare("SELECT posts.status_code, posts.content, posts.date, visibility.name AS 'share_with' FROM posts, post_permissions, visibility WHERE posts.content LIKE ? AND posts.visibility_id = visibility.id GROUP BY posts.status_code");
 $search_query->bind_param("s", $searchvar);
 
-$perms_query = $conn->prepare($sql_perms);
+$perms_query = $conn->prepare("SELECT post_permissions.code, permissions.name FROM post_permissions, permissions WHERE post_permissions.code = ? AND permissions.id = post_permissions.permission_id");
 $perms_query->bind_param("s", $statuscode);
 
 $response = array();
@@ -49,12 +43,12 @@ if (isset($_GET['searchpost'])) {
     $str = $_GET['searchpost'];
     $searchvar = "%" . $str . "%";
 
-    // $response['statusmessage'] = "Results returned: " . $result->num_rows;
     if ($search_query->execute()) {
         $result = $search_query->get_result();
 
         if ($result->num_rows > 0) {
             while ($rows = $result->fetch_assoc()) {
+
                 $output .= '<div class="card mb-3"><div class="card-header"><small class="text-muted">' .
                     $rows['status_code'] . " / " . $rows['date']
                     . '</small><div class="float-end">' . setIcon($rows['share_with']) .
@@ -70,6 +64,9 @@ if (isset($_GET['searchpost'])) {
                         while ($p = $perms->fetch_assoc()) {
                             $output .= setIcon($p['name']) . ' ';
                         }
+                    }
+                    else{
+                        $output .= '<small class="text-muted">No permissions set</small>';
                     }
                 }
 

@@ -11,7 +11,7 @@
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
         <script src="js/script.js"></script>
         <link rel="stylesheet" href="scss/style.css" type="text/css" />
         <title>About</title>
@@ -20,14 +20,18 @@
     <body>
         <nav class="navbar sticky-top navbar-expand-lg mb-3 mb-lg-5">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="images/logo.png" alt="whispurr logo" width="50" height="50" class="mx-2">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" alt="whispurr logo" width="50" height="50" class="mx-2" />
                     whispurr
                     <small class="lead">keep meowing</small>
                 </a>
             </div>
+
+            <a href="index.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Go back home"><i class="bi bi-house-fill h3"></i></a>
+
             <a href="poststatusform.php" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Post New Status"><i class="bi bi-pencil-fill h3"></i></a>
+                title="Post new status"><i class="bi bi-pencil-fill h3"></i></a>
 
             <a href="searchstatusform.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
                 title="Search for status"><i class="bi bi-search h3"></i></a>
@@ -40,38 +44,64 @@
                     class="bi bi-github h3"></i></a>
         </nav>
 
-        <div class="content container-fluid ">
-            <div class="text-light">
-                <h3 class="display-3 ">About This Assignment</h3>
+        <div class="content mx-5">
+            <div>
+                <h3 class="display-4" style="color: rgba(255, 166, 0, 0.993);">About This Assignment</h3>
             </div>
-            <hr>
-            <div class="h5 text-light">
-                What special features have you done, or attempted, in creating the site that we should
-                know about?
-            </div>
-            <p class="text-light">hi</p>
+            <hr />
+            <div class="container">
+                <div class="lead" style="color: rgba(255, 166, 0, 0.993);">
+                    What special features have you done, or attempted, in creating the site
+                    that we should know about?
+                </div>
+                <p class="text-light mx-3">
+                    I have badges that show up when you choose if users can like, comment or
+                    share a post. I also used Bootstrap to create the website.
+                    I also used Ajax calls so the users don't have to submit a post just to find out that the status
+                    code is unavailable. I also used Ajax + php to validate the user post before
+                    sending it to the database.<br><br>
 
-            <div class="h5 text-light">
-                Which parts did you have trouble with? 
-            </div>
-            <p class="text-light">hi</p>
+                    The queries are in prepared statements to prevent any sql injection attacks, because using mysqli_real_escape_string is no longer
+                    the most secure way to prevent those attacks. <br><br>
 
-            <div class="h5 text-light">
-                What would you like to do better next time?
-            </div>
-            <p class="text-light">hi</p>
+                    Also, I completely skipped creating pages for poststatusform.php and searchstatusprocess.php because the user won't see them anyway. <small>(please don't mark me down)</small>
+                </p>
 
-            <div class="h5 text-light">
-                What references/sources you have used to help you learn how to create your website?
-            </div>
-            <p class="text-light">hi</p>
+                <div class="lead" style="color: rgba(255, 166, 0, 0.993);">Which parts did you have trouble with?</div>
+                <p class="text-light mx-3">I had a bit of trouble with customizing my website. Bootstrap has its own css
+                    and I wanted to change quite a few things, so I
+                    learned how to write SCSS and I had to learn CSS Specificity which was surprisingly hard to grasp.
+                    <br><br>
 
-            <div class="h5 text-light">
-                What you have learnt along the way? 
-            </div>
-            <p class="text-light">hi</p>
-           
+                    I had the most trouble with getting the user to be able to submit another post without refreshing the page. Unfortunately, I could not get it to work 
+                    because the submit button would stop working after the first submitted post. The only workaround that worked (with the time constraint I currently have) was to redirect the user <i>back</i> to the 
+                    post status page which completely defeats the point of using ajax in the first place.   <br><br>
 
+                    I also had trouble getting the Ajax functions to work at first, but I got there in the end. 
+                </p>
+
+                <div class="lead" style="color: rgba(255, 166, 0, 0.993);">
+                    What would you like to do better next time?
+                </div>
+                <p class="text-light mx-3">I'd like to customise the website even further, and have a sliding sidebar instead of a navbar at the top of the page. 
+                    I would also like to add to the overall functionality of the website, with users being able to log in and to like, share and comment on other users' posts.
+     
+                </p>
+
+                <div class="lead" style="color: rgba(255, 166, 0, 0.993);">
+                    What references/sources you have used to help you learn how to create
+                    your website?
+                </div>
+                <p class="text-light mx-3">W3schools, mostly. I also used the Boostrap 5 documentation, PHP documentation, Jquery documentation, and of course, Stackoverflow for any problems I encountered.</p>
+
+                <div class="lead" style="color: rgba(255, 166, 0, 0.993);">What you have learnt along the way?</div>
+                <p class="text-light mx-3">I learned how to use Bootstrap, Jquery, and Ajax. <br><br>
+                
+                    <small>(I also re-learned how much I dislike writing PHP code, can we move to Node.JS?)</small>
+                </p>
+
+                <a href="index.html"><i class="bi bi-house-fill h3"></i>  Link to the homepage because the assignment brief asks for it</a>
+            </div>
         </div>
     </body>
 

@@ -13,7 +13,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/script.js"></script>
         <link rel="stylesheet" href="scss/style.css" type="text/css" />
@@ -23,23 +23,25 @@
             $(document).ready(function () {
                 initializePoppers();
             });
-
         </script>
     </head>
 
     <body>
-
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg mb-3 mb-lg-5">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/logo.png" alt="whispurr logo" width="50" height="50" class="mx-2">
+                    <img src="images/logo.png" alt="whispurr logo" width="50" height="50" class="mx-2" />
                     whispurr
                     <small class="lead">keep meowing</small>
                 </a>
             </div>
+
+            <a href="index.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                title="Go back home"><i class="bi bi-house-fill h3"></i></a>
+
             <a href="poststatusform.php" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
-                title="Post New Status"><i class="bi bi-pencil-fill h3"></i></a>
+                title="Post new status"><i class="bi bi-pencil-fill h3"></i></a>
 
             <a href="searchstatusform.html" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom"
                 title="Search for status"><i class="bi bi-search h3"></i></a>
@@ -57,31 +59,40 @@
                 <div class="row g-0">
                     <div class="d-none d-lg-block d-md-none">
                         <div class="fanta-box-header">
-                            <h6 class="display-6" style="font-size:2vw">Web Development Assignment One</h6>
+                            <h6 class="display-6" style="font-size: 2vw">
+                                Web Development Assignment One
+                            </h6>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <img src="images/fanta8.jpg" class="img-fluid card-img" alt="Orange tabby wearing a red bowtie"
-                            style="height:fit-content;" />
+                            style="height: fit-content" />
                     </div>
                     <div class="col-md-5 d-flex justify-content-center index-card">
                         <div class="my-auto text-center">
                             <blockquote class="blockquote mx-3 my-3">
-                                <p> I declare that this assignment is my individual work. I have not
-                                    worked collaboratively nor have I copied from any other student’s
-                                    work or from any other source.</p>
+                                <p>
+                                    I declare that this assignment is my individual work. I have
+                                    not worked collaboratively nor have I copied from any other
+                                    student’s work or from any other source.
+                                </p>
                             </blockquote>
                             <footer class="blockquote-footer my-4">
                                 <cite title="Source Title">The Assignment Brief</cite>
                             </footer>
                         </div>
                     </div>
-                    <div class="col-md-4 d-flex justify-content-center index-card ">
+                    <div class="col-md-4 d-flex justify-content-center index-card">
                         <ul class="list-group list-group-flush my-auto">
-                            <li class="list-group-item my-4">Name: <span class="lead">Maria Ellaira Torio</span></li>
-                            <li class="list-group-item my-4">Student ID: <span class="lead">18021275</span></li>
-                            <li class="list-group-item my-4 ">Email: <a href="mailto:gdt5133@autuni.ac.nz"
-                                    class="lead">gdt5133@autuni.ac.nz</a>
+                            <li class="list-group-item my-4">
+                                Name: <span class="lead">Maria Ellaira Torio</span>
+                            </li>
+                            <li class="list-group-item my-4">
+                                Student ID: <span class="lead">18021275</span>
+                            </li>
+                            <li class="list-group-item my-4">
+                                Email:
+                                <a href="mailto:gdt5133@autuni.ac.nz" class="lead">gdt5133@autuni.ac.nz</a>
                             </li>
                         </ul>
                     </div>

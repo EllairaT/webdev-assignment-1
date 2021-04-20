@@ -22,7 +22,7 @@ body {
   justify-content: left;
 }
 
-.main-container{
+.main-container {
   margin-top: 10%;
 }
 
@@ -118,8 +118,8 @@ cite {
   margin-top: -7%;
 }
 
-.main-content{
-  margin-top:10%;
+.main-content {
+  margin-top: 10%;
 }
 
 .fanta-box-header {
@@ -128,13 +128,19 @@ cite {
   top: 20%;
   z-index: 1;
   margin-bottom: -10px;
-  font-weight:100;
+  font-weight: 100;
   color: $fanta-orange;
 }
 
 .fanta-header {
   color: $fanta-orange;
 }
-.post-alert{
+
+.post-alert {
   position: relative;
+}
+
+.answer-box{
+  height: auto;
+  background-color: $prussian-blue;
 }
