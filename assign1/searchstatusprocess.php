@@ -44,28 +44,27 @@ if (isset($_GET['searchpost'])) {
     $searchvar = "%" . $str . "%";
 
     if ($search_query->execute()) {
-        $result = $search_query->get_result();
 
-        if ($result->num_rows > 0) {
-            while ($rows = $result->fetch_assoc()) {
+        $search_query->store_result();
+        $search_query->bind_result($statuscode, $content, $date, $visibility);
+
+        if ($search_query->num_rows() > 0) {
+            while ($search_query->fetch()) {
 
                 $output .= '<div class="card mb-3"><div class="card-header"><small class="text-muted">' .
-                    $rows['status_code'] . " / " . $rows['date']
-                    . '</small><div class="float-end">' . setIcon($rows['share_with']) .
-                    '</div></div><div class="card-body"><p class="card-text">' . $rows['content'] .
+                    $statuscode . " / " . $date
+                    . '</small><div class="float-end">' . setIcon($visibility) .
+                    '</div></div><div class="card-body"><p class="card-text">' . $content .
                     '</p></div><div class="card-footer"><div class="float-end">';
 
-                $statuscode = $rows['status_code'];
-
                 if ($perms_query->execute()) {
-                    $perms = $perms_query->get_result();
-
-                    if ($perms->num_rows > 0) {
-                        while ($p = $perms->fetch_assoc()) {
-                            $output .= setIcon($p['name']) . ' ';
+                    $perms_query->store_result();
+                    $perms_query->bind_result($code, $name);
+                    if ($perms_query->num_rows() > 0) {
+                        while ($perms_query->fetch()) {
+                            $output .= setIcon($name) . ' ';
                         }
-                    }
-                    else{
+                    } else {
                         $output .= '<small class="text-muted">No permissions set</small>';
                     }
                 }

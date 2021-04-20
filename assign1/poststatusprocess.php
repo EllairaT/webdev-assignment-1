@@ -62,10 +62,9 @@ function doesCodeExist($c)
 
     $check_code_query->execute();
 
-    $result = $check_code_query->get_result();
-    $check_code_query->close();
-
-    if ($result->num_rows > 0) {
+    $check_code_query->store_result();
+    $num_result =  $check_code_query->num_rows();
+    if ($num_result > 0) {
         return true;
     } else {
         return false;
